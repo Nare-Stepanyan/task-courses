@@ -78,8 +78,11 @@ const IconContainer = styled.div`
   margin-bottom: 75px;
   font-size: 40px;
   color: #e1aa98;
-  &.active {
-    border-left: 3px solid #8964d7;
+
+  @media (min-width: 1024px) {
+    &.active {
+      border-left: 3px solid #8964d7;
+    }
   }
 `;
 const StyledNavLink = styled(NavLink)`

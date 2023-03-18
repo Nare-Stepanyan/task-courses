@@ -13,5 +13,8 @@ export default createGlobalStyle`
    }
    body {
     overflow: hidden;
+    @media (max-width: 1024px) {
+       overflow: visible;
+      }
   }
 `;

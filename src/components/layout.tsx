@@ -3,7 +3,11 @@ import styled from "styled-components";
 import Header from "./header";
 import SideBar from "./sidebar";
 
-const Layout = ({ children }: any) => {
+interface LayoutProps {
+  children: React.ReactNode;
+}
+
+const Layout = ({ children }: LayoutProps) => {
   return (
     <Container>
       <SideBar />

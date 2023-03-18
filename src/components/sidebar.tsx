@@ -44,14 +44,14 @@ const SideBar = () => {
           />
         </StyledNavLink>
       </IconContainer>
-      <IconContainer className={activeLink === "profile" ? "active" : ""}>
+      <IconContainer className={activeLink === "/profile" ? "active" : ""}>
         <StyledNavLink
           to="/profile"
-          className={activeLink === "profile" ? "active" : ""}
+          className={activeLink === "/profile" ? "active" : ""}
         >
           <FontAwesomeIcon
             icon={faUsers}
-            onClick={() => handleItemClick("profile")}
+            onClick={() => handleItemClick("/profile")}
           />
         </StyledNavLink>
       </IconContainer>

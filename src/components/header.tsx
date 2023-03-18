@@ -1,11 +1,21 @@
 import { useAppDispatch } from "hooks/useActions";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import styled from "styled-components";
 import { courses } from "data/constants";
+import { capitalizeStr } from "helpers";
 
 const Header = () => {
+  const [pageTitle, setPageTitle] = useState("Courses");
   const [isActive, setIsActive] = useState("popular");
+  const location = useLocation();
   const { displayPopular, displayFavourite, displayNew } = useAppDispatch();
+
+  useEffect(() => {
+    const pathName = location.pathname;
+    const pageName = pathName.slice(1);
+    setPageTitle(capitalizeStr(pageName) || "Courses");
+  }, [location]);
   const handlePopularClick = () => {
     setIsActive("popular");
     displayPopular(courses);
@@ -22,31 +32,33 @@ const Header = () => {
   return (
     <Container>
       <Navigation>
-        <Title>Courses</Title>
-        <Links>
-          <Link
-            onClick={handlePopularClick}
-            className={isActive === "popular" ? "active" : ""}
-          >
-            Popular
-            {isActive === "popular" && <Line></Line>}
-          </Link>
-          <span></span>
-          <Link
-            onClick={handleFavouriteClick}
-            className={isActive === "favourite" ? "active" : ""}
-          >
-            Favourite
-            {isActive === "favourite" && <Line></Line>}
-          </Link>
-          <Link
-            onClick={handleNewClick}
-            className={isActive === "new" ? "active" : ""}
-          >
-            New
-            {isActive === "new" && <Line></Line>}
-          </Link>
-        </Links>
+        <Title>{pageTitle}</Title>
+        {pageTitle === "Courses" && (
+          <Links>
+            <Link
+              onClick={handlePopularClick}
+              className={isActive === "popular" ? "active" : ""}
+            >
+              Popular
+              {isActive === "popular" && <Line></Line>}
+            </Link>
+            <span></span>
+            <Link
+              onClick={handleFavouriteClick}
+              className={isActive === "favourite" ? "active" : ""}
+            >
+              Favourite
+              {isActive === "favourite" && <Line></Line>}
+            </Link>
+            <Link
+              onClick={handleNewClick}
+              className={isActive === "new" ? "active" : ""}
+            >
+              New
+              {isActive === "new" && <Line></Line>}
+            </Link>
+          </Links>
+        )}
       </Navigation>
     </Container>
   );

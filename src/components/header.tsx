@@ -1,15 +1,28 @@
+import { useAppDispatch } from "hooks/useActions";
 import React from "react";
 import styled from "styled-components";
+import { courses } from "data/constants";
 
 const Header = () => {
+  const { displayPopular, displayFavourite, displayNew } = useAppDispatch();
+  const handlePopularClick = () => {
+    displayPopular(courses);
+  };
+  const handleFavouriteClick = () => {
+    displayFavourite(courses);
+  };
+  const handleNewClick = () => {
+    displayNew(courses);
+  };
+
   return (
     <Container>
       <Navigation>
         <Title>Courses</Title>
         <Links>
-          <Link>Popular</Link>
-          <Link>Favourite</Link>
-          <Link>New</Link>
+          <Link onClick={handlePopularClick}>Popular</Link>
+          <Link onClick={handleFavouriteClick}>Favourite</Link>
+          <Link onClick={handleNewClick}> New</Link>
         </Links>
       </Navigation>
     </Container>

@@ -1,23 +1,27 @@
 import Layout from "components/layout";
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
-import Card from "components/card";
 import { courses } from "data/constants";
-import { ICard } from "react-app-env";
 import { RootState } from "state/reducers";
 import { useAppSelector } from "hooks/useTypedSelector";
 import { useAppDispatch } from "hooks/useActions";
+import Card from "components/card";
+import { ICard } from "react-app-env";
 
 const Courses = () => {
-  const state = useAppSelector((state: RootState) => state.courses);
-  const { displayPopular, displayFavourite, displayNew } = useAppDispatch();
-  const [courseList, setCourseList] = useState<ICard[]>(courses);
-  const data = courseList[0];
-  console.log(data, "data");
+  const cards: ICard[] = useAppSelector((state: RootState) => state.courses);
+  const { displayPopular } = useAppDispatch();
+  useEffect(() => {
+    displayPopular(courses);
+  }, []);
+  useEffect(() => {}, [cards]);
   return (
     <Layout>
       <Container>
-        <Card data={data} />
+        {cards &&
+          cards.map((item: ICard, i) => {
+            return <Card data={item} key={i} />;
+          })}
       </Container>
     </Layout>
   );

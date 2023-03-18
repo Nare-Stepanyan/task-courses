@@ -1,10 +1,10 @@
+import { courses } from "data/constants";
 import { ICard } from "react-app-env";
 import { ActionType } from "../action-types/index";
 import { Action } from "../actions";
-import { courses } from "data/constants";
 
 interface IInitialState {
-  cards: Array<ICard>;
+  cards: ICard[];
 }
 
 const initialState: IInitialState = {
@@ -14,13 +14,13 @@ const initialState: IInitialState = {
 const reducer = (state = initialState, action: Action): Array<ICard> => {
   switch (action.type) {
     case ActionType.POPULAR:
-      return [];
+      return (state.cards = [...action.payload]);
     case ActionType.FAVOURITE:
-      return [];
+      return (state.cards = [...action.payload]);
     case ActionType.NEW:
-      return [];
+      return (state.cards = [...action.payload]);
     default:
-      return [];
+      return state.cards;
   }
 };
 

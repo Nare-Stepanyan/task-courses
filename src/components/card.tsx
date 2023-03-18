@@ -37,6 +37,11 @@ const Container = styled.div<ContainerProps>`
   position: relative;
   margin-bottom: 60px;
   z-index: 1000;
+  @media (max-width: 1024px) {
+    max-height: 275px;
+    min-height: 275px;
+    padding: 20px;
+  }
 `;
 const TopTexts = styled.div`
   display: flex;
@@ -46,6 +51,9 @@ const TopTexts = styled.div`
   font-weight: 500;
   font-size: 24px;
   color: #ffffff;
+  @media (max-width: 1024px) {
+    margin-bottom: 8px;
+  }
 `;
 const Lessons = styled.div`
   font-weight: 500;
@@ -63,6 +71,12 @@ const Play = styled.div`
     max-width: 100%;
     max-height: 100%;
     border-radius: 16px;
+  }
+  @media (max-width: 1024px) {
+    width: 58px;
+    height: 54px;
+    bottom: 40px;
+    left: 20px;
   }
 `;
 export default Card;

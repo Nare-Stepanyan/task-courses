@@ -68,6 +68,9 @@ const Container = styled.div`
   padding-top: 127px;
   background-color: #ffe4d6;
   border-radius: 24px 0px 0px 0px;
+  @media (max-width: 1024px) {
+    width: 100px;
+  }
 `;
 const IconContainer = styled.div`
   width: 100%;

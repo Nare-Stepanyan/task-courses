@@ -32,6 +32,9 @@ const Container = styled.div`
   height: 100vh;
   width: 100%;
   padding: 0 100px;
+  @media (max-width: 1024px) {
+    padding: 0 30px;
+  }
 `;
 
 export default Courses;

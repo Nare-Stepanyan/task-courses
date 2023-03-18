@@ -57,18 +57,28 @@ const Container = styled.div`
   width: 100%;
   background-color: #fff4ee;
   border-radius: 0px 24px 0px 0px;
+  @media (max-width: 1024px) {
+    padding: 75px 30px;
+  }
 `;
 
 const Navigation = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  @media (max-width: 1024px) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 `;
 const Title = styled.div`
   font-style: normal;
   font-weight: 400;
   font-size: 48px;
   color: #000000;
+  @media (max-width: 1024px) {
+    margin-bottom: 15px;
+  }
 `;
 const Links = styled.div`
   display: flex;
@@ -85,6 +95,10 @@ const Link = styled.a`
   position: relative;
   &.active {
     color: #6749a5;
+  }
+  @media (max-width: 1024px) {
+    margin-left: 0;
+    margin-right: 35px;
   }
 `;
 const Line = styled.span`

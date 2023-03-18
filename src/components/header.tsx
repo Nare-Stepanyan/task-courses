@@ -42,7 +42,6 @@ const Navigation = styled.div`
   align-items: center;
 `;
 const Title = styled.div`
-  font-family: "Montserrat";
   font-style: normal;
   font-weight: 400;
   font-size: 48px;
@@ -54,11 +53,8 @@ const Links = styled.div`
   align-items: center;
 `;
 const Link = styled.div`
-  font-family: "Montserrat";
-  font-style: normal;
   font-weight: 700;
   font-size: 24px;
-  line-height: 29px;
   color: #cbb1a2;
   margin-left: 48px;
   cursor: pointer;

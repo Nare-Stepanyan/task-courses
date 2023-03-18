@@ -1,42 +1,59 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faTableColumns,
   faClipboardList,
   faUsers,
 } from "@fortawesome/free-solid-svg-icons";
-import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 const SideBar = () => {
-  const navigate = useNavigate();
-  const [active, isActive] = useState(false);
+  const [activeLink, setActiveLink] = useState("");
+
+  useEffect(() => {
+    const path = window.location.pathname;
+    setActiveLink(path);
+  }, []);
+  const handleItemClick = (item: string) => {
+    setActiveLink(item);
+  };
 
   return (
     <Container>
-      <IconContainer>
-        <FontAwesomeIcon
-          icon={faTableColumns}
-          onClick={() => {
-            navigate("/");
-          }}
-        />
+      <IconContainer className={activeLink === "/" ? "active" : ""}>
+        <StyledNavLink
+          to="/"
+          onClick={() => handleItemClick("/")}
+          className={activeLink === "/" ? "active" : ""}
+        >
+          <FontAwesomeIcon icon={faTableColumns} />
+        </StyledNavLink>
       </IconContainer>
-      <IconContainer>
-        <FontAwesomeIcon
-          icon={faClipboardList}
-          onClick={() => {
-            navigate("/completed-courses");
-          }}
-        />
+      <IconContainer
+        className={activeLink === "/completed-courses" ? "active" : ""}
+      >
+        <StyledNavLink
+          to="/completed-courses"
+          onClick={() => handleItemClick("/completed-courses")}
+          className={activeLink === "/completed-courses" ? "active" : ""}
+        >
+          <FontAwesomeIcon
+            icon={faClipboardList}
+            onClick={() => handleItemClick("completed")}
+          />
+        </StyledNavLink>
       </IconContainer>
-      <IconContainer>
-        <FontAwesomeIcon
-          icon={faUsers}
-          onClick={() => {
-            navigate("/profile");
-          }}
-        />
+      <IconContainer className={activeLink === "profile" ? "active" : ""}>
+        <StyledNavLink
+          to="/profile"
+          className={activeLink === "profile" ? "active" : ""}
+        >
+          <FontAwesomeIcon
+            icon={faUsers}
+            onClick={() => handleItemClick("profile")}
+          />
+        </StyledNavLink>
       </IconContainer>
     </Container>
   );
@@ -51,20 +68,25 @@ const Container = styled.div`
   padding-top: 127px;
   background-color: #ffe4d6;
   border-radius: 24px 0px 0px 0px;
-  color: #e1aa98;
 `;
-const ActiveIcon = styled.div`
-  color: #8964d7;
-  border-left: 3px solid #8964d7;
-`;
-const IconContainer = styled.div.attrs({
-  className: ActiveIcon,
-})`
+const IconContainer = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
   margin-bottom: 75px;
   font-size: 40px;
-  cursor: pointer;
+  color: #e1aa98;
+  &.active {
+    border-left: 3px solid #8964d7;
+  }
 `;
+const StyledNavLink = styled(NavLink)`
+  text-decoration: none;
+  color: #e1aa98;
+  cursor: pointer;
+  &.active {
+    color: #8964d7;
+  }
+`;
+
 export default SideBar;

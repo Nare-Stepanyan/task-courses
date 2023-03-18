@@ -43,13 +43,11 @@ const TopTexts = styled.div`
   justify-content: space-between;
   align-items: flex-start;
   margin-bottom: 15px;
-  font-family: "Montserrat";
   font-weight: 500;
   font-size: 24px;
   color: #ffffff;
 `;
 const Lessons = styled.div`
-  font-family: "Montserrat";
   font-weight: 500;
   font-size: 16px;
   color: #ffffff;

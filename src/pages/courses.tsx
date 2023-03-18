@@ -32,6 +32,18 @@ const Container = styled.div`
   height: 100vh;
   width: 100%;
   padding: 0 100px;
+  overflow: auto;
+  &::-webkit-scrollbar {
+    width: 23px;
+  }
+  &::-webkit-scrollbar-track {
+    background-color: #f2cbbf;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: #c4c4c4;
+    height: 100px;
+    border-radius: 5px;
+  }
   @media (max-width: 1024px) {
     padding: 0 30px;
   }

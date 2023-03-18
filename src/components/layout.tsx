@@ -19,14 +19,13 @@ const Layout = ({ children }: any) => {
 const Container = styled.div`
   display: flex;
   justify-content: flex-start;
-  align-items: flex-start;
+  align-items: stretch;
 `;
 const Main = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   width: 100%;
-  height: 100vh;
-  background-color: ;
+  background-color: #fff4ee;
 `;
 export default Layout;
